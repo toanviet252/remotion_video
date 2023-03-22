@@ -1,0 +1,45 @@
+.shape-container {
+	background-color: black;
+	height: 50%;
+	width: 100%;
+	padding: 0 60px;
+}
+.content-container {
+	height: 50%;
+	width: 100%;
+	background-color: black;
+	font-family: 'Open Sans';
+	color: white;
+	padding: 0 60px;
+}
+
+.content {
+	margin: 3rem 0;
+	font-size: 5rem;
+	text-transform: uppercase;
+	font-weight: 800;
+}
+
+.sub-content {
+	position: relative;
+	font-family: 'Open Sans';
+	font-weight: 700;
+	font-size: 3rem;
+	height: 300px;
+	overflow: hidden;
+}
+.sub-content .left {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+.sub-content .left span {
+	background-color: rgb(12, 12, 183);
+	padding: 0.8rem 0.6rem;
+	width: fit-content;
+}
+.logo {
+	position: absolute;
+	bottom: 30%;
+	right: 0;
+}

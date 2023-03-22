@@ -1,0 +1,17 @@
+.text-theme-container {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	background-color: #0819b4cf;
+	padding: 5rem;
+	color: white;
+	font-size: 35px;
+}
+.author {
+	background-color: white;
+	color: #06158b;
+	padding: 1rem 1.5rem;
+	font-weight: 800;
+	font-size: 3rem;
+	letter-spacing: 2px;
+}

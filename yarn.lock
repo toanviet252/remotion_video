@@ -322,7 +322,7 @@
   dependencies:
     remotion "3.3.78"
 
-"@remotion/renderer@3.3.78":
+"@remotion/renderer@3.3.78", "@remotion/renderer@^3.3.78":
   version "3.3.78"
   resolved "https://registry.yarnpkg.com/@remotion/renderer/-/renderer-3.3.78.tgz#4d596a9154bda046d5878990fc87cb329f7f5567"
   integrity sha512-P32CiRddROFB/nfCC8ud7fPOYAhxYoVx4IlkOj+Na7pDkrX1izfUTMyzzPqpP+s6EgKKo0vibGS9p20irt5B1w==

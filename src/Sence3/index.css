@@ -1,0 +1,9 @@
+.stock-value-container {
+	display: flex;
+	justify-content: space-between;
+}
+.stock-item {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
