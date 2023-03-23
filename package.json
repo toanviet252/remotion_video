@@ -13,6 +13,8 @@
 	"dependencies": {
 		"@remotion/cli": "3.3.78",
 		"@remotion/renderer": "^3.3.78",
+		"chart.js": "^4.2.1",
+		"json-loader": "^0.5.7",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",
 		"remotion": "3.3.78"

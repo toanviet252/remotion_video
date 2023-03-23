@@ -1,5 +1,6 @@
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import Line from './Component/Line';
+import ShapeContainer from './Component/ShapeContainer';
 import SubContent from './Component/Subcontent';
 
 import './intro.css';
@@ -14,7 +15,7 @@ const Intro: React.FC = () => {
 					opacity: `${outroOpacity}`,
 				}}
 			>
-				<div className="shape-container"></div>
+				<ShapeContainer />
 				<div className="content-container">
 					<div className="content">
 						<Line content="Amazon india rolls" startFrame={0} endFrame={15} />

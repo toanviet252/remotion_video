@@ -27,9 +27,7 @@ const SubContent: React.FC = () => {
 						paddingBottom: `${paddingBottom}px`,
 					}}
 				>
-					<Text text="21" startFrame={36} endFrame={46} />
-					<Text text="Oct" startFrame={44} endFrame={54} />
-					<Text text="2022" startFrame={52} endFrame={62} />
+					<Text text="21 Oct 2022" startFrame={36} endFrame={46} />
 				</span>
 				<span
 					style={{

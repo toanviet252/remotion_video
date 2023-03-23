@@ -2,7 +2,7 @@
 	background-color: black;
 	height: 50%;
 	width: 100%;
-	padding: 0 60px;
+	display: flex;
 }
 .content-container {
 	height: 50%;

@@ -1,4 +1,4 @@
-import {useCurrentFrame, interpolate, Easing} from 'remotion';
+import {useCurrentFrame, interpolate, Easing, useVideoConfig, spring} from 'remotion';
 
 const Line: React.FC<{
 	content: string;
@@ -6,6 +6,18 @@ const Line: React.FC<{
 	endFrame: number;
 }> = ({content, startFrame, endFrame}) => {
 	const frame = useCurrentFrame();
+	// const {fps} = useVideoConfig();
+
+	// const progress = spring({
+	// 	fps,
+	// 	frame: frame,
+	// 	from: 1080,
+	// 	to: 0,
+	// 	config: {
+	// 		stiffness: 200,
+	// 	},
+	// });
+
 	const translateX = interpolate(frame, [startFrame, endFrame], [1080, 0], {
 		extrapolateRight: 'clamp',
 		extrapolateLeft: 'clamp',
@@ -16,11 +28,9 @@ const Line: React.FC<{
 		extrapolateLeft: 'clamp',
 		easing: Easing.ease,
 	});
-	/*
-  text-shadow: 7px 0px 0px rgba(16,0,197,0.85);
-  */
 	return (
 		<div className="line-content">
+			{/* <span style={{color: 'white'}}>{progress}</span> */}
 			<span
 				style={{
 					transform: `translateX(${translateX}px)`,

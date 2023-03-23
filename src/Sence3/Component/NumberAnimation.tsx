@@ -19,7 +19,7 @@ const NumberAnimation: React.FC<{
 			style={{
 				opacity,
 				color: `${fontColor ?? 'white'}`,
-				fontSize: '2rem',
+				fontSize: '3rem',
 				backgroundColor,
 				padding: '1rem',
 				width: 'fit-content',

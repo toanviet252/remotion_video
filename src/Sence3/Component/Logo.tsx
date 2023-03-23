@@ -1,9 +1,18 @@
-import {interpolate, useCurrentFrame} from 'remotion';
+import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import TextAnimation from './TextAnimation';
 
 const LogoSvg: React.FC = () => {
 	const frame = useCurrentFrame();
+	const {fps} = useVideoConfig();
 	const opacity = interpolate(frame, [0, 30], [0, 1]);
+	const value = spring({
+		fps,
+		frame,
+		config: {
+			damping: 1000,
+		},
+		// durationInFrames: 40,
+	});
 
 	return (
 		<>
@@ -50,16 +59,17 @@ const LogoSvg: React.FC = () => {
 						justifyContent: 'space-between',
 					}}
 				>
+					<p style={{fontSize: '2rem', color: 'white'}}>{value}</p>
 					<span>
 						<TextAnimation
 							text="Amazon.com Inc"
 							startFrame={20}
 							endFrame={30}
 							translateYArray={[-50, 0]}
-							fontSize={'3rem'}
+							fontSize={'3.5rem'}
 						/>
 					</span>
-					<TextAnimation text="AMZN.O" startFrame={40} endFrame={50} translateYArray={[-50, 0]} fontSize="1.5rem" />
+					<TextAnimation text="AMZN.O" startFrame={40} endFrame={50} translateYArray={[-50, 0]} />
 				</div>
 			</div>
 		</>
