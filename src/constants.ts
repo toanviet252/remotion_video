@@ -5,7 +5,8 @@ export const ExtraPolateOptions: InterpolateOptions = {
 	extrapolateRight: extrapolate,
 };
 
-export const dataChart1 = `114.8
+export const dataChart1 = `
+114.8
 114.89
 114.64
 114.64
@@ -45,7 +46,12 @@ export const dataChart1 = `114.8
 114.99
 114.79
 115.705
-`;
+`
+	.split('\n')
+	.filter((i) => i !== '')
+	.map((i) => parseFloat(i))
+	.reverse();
+
 export const dataChart2 = `
 11169.127
 11152.626
@@ -87,4 +93,8 @@ export const dataChart2 = `
 11200.097
 11277.862
 11277.862
-`;
+`
+	.split('\n')
+	.filter((i) => i !== '')
+	.map((i) => parseFloat(i))
+	.reverse();

@@ -16,6 +16,7 @@
 		"chart.js": "^4.2.1",
 		"json-loader": "^0.5.7",
 		"react": "^18.0.0",
+		"react-chartjs-2": "^5.2.0",
 		"react-dom": "^18.0.0",
 		"remotion": "3.3.78"
 	},

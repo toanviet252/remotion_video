@@ -1,9 +1,19 @@
 .stock-value-container {
 	display: flex;
 	justify-content: space-between;
+	margin: 2rem 0 5rem 0;
 }
 .stock-item {
 	display: flex;
 	flex-direction: column;
 	gap: 5px;
+}
+.chart-label {
+	position: relative;
+}
+.chart-label span {
+	font-size: 2rem;
+	padding: 0.2rem;
+	font-weight: 700;
+	position: absolute;
 }

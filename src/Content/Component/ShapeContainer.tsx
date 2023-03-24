@@ -1,14 +1,14 @@
 import Shape from './Shape';
-import {useCurrentFrame, random} from 'remotion';
-import {useMemo} from 'react';
+import {useCurrentFrame} from 'remotion';
 import {renderOpacityAndTransitionValue} from '../../renderValue';
 import ShapeData from '../../shape.json';
 
 const ShapeContainer: React.FC = () => {
 	const frame = useCurrentFrame();
 
-	// const colorArray = ['white', 'yellow', 'blue'];
+	// create random data
 
+	// const colorArray = ['white', 'yellow', 'blue'];
 	// const shapeColumns = useMemo(() => {
 	// 	return new Array(8).fill(true).map((_, i) => {
 	// 		return {
@@ -25,7 +25,7 @@ const ShapeContainer: React.FC = () => {
 	// 		};
 	// 	});
 	// }, []);
-	console.log('shapeData', ShapeData);
+
 	return (
 		<div className="shape-container">
 			{ShapeData.map((shapeColumn) => {

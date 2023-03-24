@@ -17,7 +17,6 @@ const Footer: React.FC = () => {
 	return (
 		<div className="sub-content">
 			<div className="sub-content left">
-				<p style={{color: 'white', fontSize: '3rem'}}>Frame {frame}</p>
 				<span
 					style={{
 						display: 'inline-block',

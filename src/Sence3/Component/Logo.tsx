@@ -59,7 +59,6 @@ const LogoSvg: React.FC = () => {
 						justifyContent: 'space-between',
 					}}
 				>
-					<p style={{fontSize: '2rem', color: 'white'}}>{value}</p>
 					<span>
 						<TextAnimation
 							text="Amazon.com Inc"

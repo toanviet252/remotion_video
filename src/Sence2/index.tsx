@@ -1,10 +1,14 @@
-import {AbsoluteFill, Sequence, Video, staticFile} from 'remotion';
+import {AbsoluteFill, Sequence, Video, staticFile, interpolate, useCurrentFrame} from 'remotion';
+
+import {ExtraPolateOptions} from '../constants';
 import TextTheme from './TextTheme/TextTheme';
 
 const Sence2: React.FC = () => {
+	const frame = useCurrentFrame();
+	const opacity = interpolate(frame, [570, 620], [1, 0], {...ExtraPolateOptions});
 	return (
 		<AbsoluteFill>
-			<Sequence from={150} durationInFrames={470}>
+			<Sequence from={150} durationInFrames={460} style={{opacity}}>
 				<TextTheme />
 			</Sequence>
 			<Sequence from={140} durationInFrames={480}>
