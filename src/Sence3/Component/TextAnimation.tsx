@@ -1,5 +1,5 @@
-import {Easing, interpolate, useCurrentFrame} from 'remotion';
-import {ExtraPolateOptions} from '../../constants';
+import { ExtraPolateOptions } from '@/constants';
+import { Easing, interpolate, useCurrentFrame } from 'remotion';
 
 const TextAnimation: React.FC<{
 	text: string;

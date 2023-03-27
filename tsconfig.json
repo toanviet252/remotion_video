@@ -6,10 +6,18 @@
 		"outDir": "./dist",
 		"strict": true,
 		"noEmit": true,
-		"lib": ["es2015"],
+		"lib": [
+			"es2015"
+		],
+		"baseUrl": ".",
 		"esModuleInterop": true,
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,
-		"resolveJsonModule": true
+		"resolveJsonModule": true,
+		"paths": {
+			"@/*": [
+				"src/*"
+			],
+		}
 	}
 }

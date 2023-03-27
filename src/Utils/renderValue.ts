@@ -1,6 +1,7 @@
 import {interpolate} from 'remotion';
-import {ExtraPolateOptions} from './constants';
-//Tạo vòng lặp tăng giảm giá trị cho opacity
+import {ExtraPolateOptions} from '../constants';
+
+// Cycling change opacity
 export const renderOpacityAndTransitionValue = (
 	frame: number,
 	cycleDurationOpacity: number,

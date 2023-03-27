@@ -1,7 +1,8 @@
-import {AbsoluteFill, Sequence, Video, staticFile, interpolate, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, interpolate, Sequence, useCurrentFrame, Video} from 'remotion';
 
-import {ExtraPolateOptions} from '../constants';
-import TextTheme from './TextTheme/TextTheme';
+import {VideoFile} from '@/Assets/Scene2';
+import {ExtraPolateOptions} from '@/constants';
+import TextContent from './TextContent';
 
 const Sence2: React.FC = () => {
 	const frame = useCurrentFrame();
@@ -9,7 +10,7 @@ const Sence2: React.FC = () => {
 	return (
 		<AbsoluteFill>
 			<Sequence from={150} durationInFrames={460} style={{opacity}}>
-				<TextTheme />
+				<TextContent durationInFrames={460} />
 			</Sequence>
 			<Sequence from={140} durationInFrames={480}>
 				<AbsoluteFill
@@ -20,9 +21,9 @@ const Sence2: React.FC = () => {
 					}}
 				>
 					<Video
-						src={staticFile('background.mp4')}
+						muted
+						src={VideoFile}
 						loop={false}
-						muted={true}
 						style={{
 							objectFit: 'cover',
 							height: '100%',

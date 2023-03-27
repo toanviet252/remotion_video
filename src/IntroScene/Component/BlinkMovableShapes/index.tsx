@@ -1,12 +1,12 @@
-import Shape from './Shape';
+import ShapeData from '@/shape.json';
+import {renderOpacityAndTransitionValue} from '@/Utils/renderValue';
 import {useCurrentFrame} from 'remotion';
-import {renderOpacityAndTransitionValue} from '../../renderValue';
-import ShapeData from '../../shape.json';
+import Shape from './Shape';
 
 const ShapeContainer: React.FC = () => {
 	const frame = useCurrentFrame();
 
-	// create random data
+	// Create random data
 
 	// const colorArray = ['white', 'yellow', 'blue'];
 	// const shapeColumns = useMemo(() => {
@@ -31,9 +31,9 @@ const ShapeContainer: React.FC = () => {
 			{ShapeData.map((shapeColumn) => {
 				return (
 					<div
+						key={shapeColumn.id}
 						className="shape-column"
 						style={{width: '12.5%', height: '100%', position: 'relative'}}
-						key={shapeColumn.id}
 					>
 						{shapeColumn.shapes.map((shape, index) => {
 							const {opacity, translationY} = renderOpacityAndTransitionValue(
@@ -43,12 +43,12 @@ const ShapeContainer: React.FC = () => {
 							);
 							return (
 								<Shape
+									key={index}
 									backgroundColor={shape.color}
 									height={shape.height}
 									top={shape.top}
 									opacity={opacity}
 									translateY={translationY}
-									key={index}
 								/>
 							);
 						})}

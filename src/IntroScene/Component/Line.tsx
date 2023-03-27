@@ -1,4 +1,4 @@
-import {useCurrentFrame, interpolate, Easing, useVideoConfig, spring} from 'remotion';
+import { Easing, interpolate, useCurrentFrame } from 'remotion';
 
 const Line: React.FC<{
 	content: string;
@@ -6,7 +6,7 @@ const Line: React.FC<{
 	endFrame: number;
 }> = ({content, startFrame, endFrame}) => {
 	const frame = useCurrentFrame();
-	// const {fps} = useVideoConfig();
+	// Const {fps} = useVideoConfig();
 
 	// const progress = spring({
 	// 	fps,

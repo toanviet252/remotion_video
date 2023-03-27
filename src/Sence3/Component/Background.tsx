@@ -1,5 +1,5 @@
+import {ExtraPolateOptions} from '@/constants';
 import {interpolate, useCurrentFrame} from 'remotion';
-import {ExtraPolateOptions} from '../../constants';
 
 const shape = [
 	{

@@ -1,23 +1,24 @@
-import React from 'react';
+import { dataChart1, dataChart2 } from '@/Assets/Charts';
 import {
-	Chart as ChartJS,
 	CategoryScale,
-	LinearScale,
-	PointElement,
-	LineElement,
-	Title,
-	Tooltip,
+	Chart as ChartJS,
+	ChartData,
+	ChartOptions,
 	Legend,
+	LinearScale,
+	LineElement,
+	PointElement,
+	Title,
+	Tooltip
 } from 'chart.js';
-import {Line} from 'react-chartjs-2';
-import {ChartOptions, ChartData} from 'chart.js';
-import {easingEffects} from 'chart.js/helpers';
-import {dataChart1, dataChart2} from '../../constants';
+import { easingEffects } from 'chart.js/helpers';
+import React from 'react';
+import { Line } from 'react-chartjs-2';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 // Animation:
-let easing = easingEffects.easeInOutSine;
+const easing = easingEffects.easeInOutSine;
 const totalDuration = 3500;
 const duration = (ctx: any) => (easing(ctx.index / dataChart1.length) * totalDuration) / dataChart1.length;
 
@@ -33,8 +34,8 @@ const options: ChartOptions<'line'> = {
 		x: {
 			type: 'number',
 			easing: 'easeInOutSine',
-			duration: duration,
-			from: NaN, // the point is initially skipped
+			duration,
+			from: NaN, // The point is initially skipped
 			delay(ctx: any) {
 				if (ctx.type !== 'data' || ctx.xStarted) {
 					return 0;
@@ -47,7 +48,7 @@ const options: ChartOptions<'line'> = {
 		y: {
 			type: 'number',
 			easing: 'easeInOutSine',
-			duration: duration,
+			duration,
 			from: previousY,
 			delay(ctx: any) {
 				if (ctx.type !== 'data' || ctx.yStarted) {
@@ -107,7 +108,7 @@ const options: ChartOptions<'line'> = {
 	},
 };
 
-//Data block
+// Data block
 const data: ChartData<'line'> = {
 	labels: new Array(dataChart1.length).fill(''),
 	datasets: [

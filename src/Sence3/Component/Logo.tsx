@@ -1,4 +1,4 @@
-import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
+import { interpolate, spring, useCurrentFrame, useVideoConfig } from 'remotion';
 import TextAnimation from './TextAnimation';
 
 const LogoSvg: React.FC = () => {
@@ -11,7 +11,7 @@ const LogoSvg: React.FC = () => {
 		config: {
 			damping: 1000,
 		},
-		// durationInFrames: 40,
+		// DurationInFrames: 40,
 	});
 
 	return (
@@ -65,7 +65,7 @@ const LogoSvg: React.FC = () => {
 							startFrame={20}
 							endFrame={30}
 							translateYArray={[-50, 0]}
-							fontSize={'3.5rem'}
+							fontSize="3.5rem"
 						/>
 					</span>
 					<TextAnimation text="AMZN.O" startFrame={40} endFrame={50} translateYArray={[-50, 0]} />

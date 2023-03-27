@@ -1,6 +1,6 @@
-import {Sequence} from 'remotion';
-import Intro from './Content/Intro';
-import FinalSence from './FinalSence/FinalSence';
+import { Sequence } from 'remotion';
+import FinalScene from './FinalScene/FinalSence';
+import Intro from './IntroScene/Intro';
 import Sence2 from './Sence2';
 import Sence3 from './Sence3/Sence3';
 
@@ -23,7 +23,7 @@ export const MyVideo: React.FC = () => {
 
 			<Sence3 />
 
-			<FinalSence />
+			<FinalScene />
 		</div>
 	);
 };

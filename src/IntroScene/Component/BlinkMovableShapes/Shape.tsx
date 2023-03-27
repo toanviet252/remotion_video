@@ -22,4 +22,5 @@ const Shape: React.FC<{
 		</div>
 	);
 };
+
 export default Shape;

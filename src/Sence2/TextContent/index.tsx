@@ -1,8 +1,12 @@
-import {Easing, interpolate, useCurrentFrame} from 'remotion';
-import './theme.css';
-import {ExtraPolateOptions} from '../../constants';
+import './style.css';
 
-const TextTheme: React.FC = () => {
+import {useMemo} from 'react';
+import {Easing, interpolate, useCurrentFrame} from 'remotion';
+
+import {TextContent} from '@/Assets/Scene2';
+import {ExtraPolateOptions} from '@/constants';
+
+const TextContentComp = ({durationInFrames}: {durationInFrames: number}): JSX.Element => {
 	const frame = useCurrentFrame();
 	const height = interpolate(frame, [0, 30], [15, 55], {
 		...ExtraPolateOptions,
@@ -12,27 +16,39 @@ const TextTheme: React.FC = () => {
 		...ExtraPolateOptions,
 		easing: Easing.bezier(0.11, 0.36, 0.48, 0.94),
 	});
+
 	const opacity = interpolate(frame, [260, 290], [0, 1]);
-	const wordOpacity = (index: number) => {
-		// return interpolate(frame - index * 7, [30, 60], [0.5, 1]);
-		const initialOpacity = 0.15;
-		const opacityIncrement = 0.1;
-		const delay = 10;
-		let opacity = initialOpacity;
 
-		if (index === 0 || wordOpacity(index - 1) >= 1) {
-			const waitTime = index * delay;
-			const progress = (frame - waitTime) / delay;
-			opacity = Math.min(initialOpacity + progress * opacityIncrement, 1);
-		}
-
-		return opacity;
-	};
 	const translateY = interpolate(frame, [0, 35], [720, 0], {
 		...ExtraPolateOptions,
 		easing: Easing.ease,
 	});
-	const words = `Amazon launches live-streaming video feature in India to drive sales. Tied up with social media influences to host live-streams, interact with customers, and offer limited period deals. Popular in China, Youtube also expanded live-stream shopping`;
+
+	const words = useMemo(() => {
+		return TextContent.split(' ');
+	}, []);
+
+	const wordOpacity = (index: number) => {
+		const idleOpacity = 0.15;
+		const totalWords = words.length;
+		if (totalWords === 0) {
+			return idleOpacity;
+		}
+		const currentFrame = frame;
+
+		const delay = 40;
+		if (currentFrame < delay) {
+			return idleOpacity;
+		}
+		const textAfter = 30;
+		const textDuration = durationInFrames - delay - textAfter;
+		const showAt = (textDuration * index) / totalWords;
+		if (currentFrame >= delay + showAt) {
+			return 1;
+		}
+		return idleOpacity;
+	};
+
 	return (
 		<>
 			<div
@@ -75,16 +91,16 @@ const TextTheme: React.FC = () => {
 							transform: `translateY(${translateY}px)`,
 						}}
 					>
-						{words.split(' ').map((word, index) => {
+						{words.map((word, index) => {
 							return (
 								<span
+									key={index}
 									style={{
 										display: 'inline-block',
 										opacity: wordOpacity(index),
 										marginRight: '1rem',
 										fontSize: '60px',
 									}}
-									key={index}
 								>
 									{word}
 								</span>
@@ -104,4 +120,4 @@ const TextTheme: React.FC = () => {
 		</>
 	);
 };
-export default TextTheme;
+export default TextContentComp;
