@@ -17,7 +17,7 @@ const TextContentComp = ({durationInFrames}: {durationInFrames: number}): JSX.El
 		easing: Easing.bezier(0.11, 0.36, 0.48, 0.94),
 	});
 
-	const opacity = interpolate(frame, [260, 290], [0, 1]);
+	const opacity = interpolate(frame, [durationInFrames - 45, durationInFrames - 15], [0, 1]);
 
 	const translateY = interpolate(frame, [0, 35], [720, 0], {
 		...ExtraPolateOptions,
@@ -40,8 +40,7 @@ const TextContentComp = ({durationInFrames}: {durationInFrames: number}): JSX.El
 		if (currentFrame < delay) {
 			return idleOpacity;
 		}
-		const textAfter = 30;
-		const textDuration = durationInFrames - delay - textAfter;
+		const textDuration = durationInFrames - delay;
 		const showAt = (textDuration * index) / totalWords;
 		if (currentFrame >= delay + showAt) {
 			return 1;

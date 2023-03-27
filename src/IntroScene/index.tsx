@@ -1,11 +1,11 @@
-import { AbsoluteFill, interpolate, useCurrentFrame } from 'remotion';
+import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import BlinkMovableShapes from './Component/BlinkMovableShapes';
 import Line from './Component/Line';
 import SubContent from './Component/Subcontent';
 
-import { TextContent } from '@/Assets/Scene1';
-import { useMemo } from 'react';
-import './intro.css';
+import {TextContent} from '@/Assets/Scene1';
+import {useMemo} from 'react';
+import './style.css';
 
 const Intro: React.FC = () => {
 	const frame = useCurrentFrame();

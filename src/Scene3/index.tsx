@@ -16,7 +16,7 @@ import NumberAnimation from './Component/NumberAnimation';
 import TextAnimation from './Component/TextAnimation';
 import './index.css';
 
-const Sence3: React.FC = () => {
+const Scene3: React.FC = () => {
 	const frame = useCurrentFrame();
 	const opacity = interpolate(frame, [590, 610], [0, 1], {...ExtraPolateOptions});
 	const opacity2 = interpolate(frame, [650, 680], [0, 1], {...ExtraPolateOptions});
@@ -159,10 +159,10 @@ const Sence3: React.FC = () => {
 
 			<AbsoluteFill className="Chart" style={{zIndex: '100', position: 'absolute', height: '50%', top: '32%'}}>
 				<Sequence from={650} durationInFrames={210} style={{margin: '4rem', width: '90%', opacity: `${opacity2}`}}>
-					<Chart durationInFrames={210} />
+					<Chart durationInFrames={160} />
 				</Sequence>
 			</AbsoluteFill>
 		</>
 	);
 };
-export default Sence3;
+export default Scene3;

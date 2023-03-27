@@ -4,13 +4,13 @@ import {VideoFile} from '@/Assets/Scene2';
 import {ExtraPolateOptions} from '@/constants';
 import TextContent from './TextContent';
 
-const Sence2: React.FC = () => {
+const Scene2: React.FC = () => {
 	const frame = useCurrentFrame();
 	const opacity = interpolate(frame, [570, 620], [1, 0], {...ExtraPolateOptions});
 	return (
 		<AbsoluteFill>
 			<Sequence from={150} durationInFrames={460} style={{opacity}}>
-				<TextContent durationInFrames={460} />
+				<TextContent durationInFrames={420} />
 			</Sequence>
 			<Sequence from={140} durationInFrames={480}>
 				<AbsoluteFill
@@ -35,4 +35,4 @@ const Sence2: React.FC = () => {
 		</AbsoluteFill>
 	);
 };
-export default Sence2;
+export default Scene2;

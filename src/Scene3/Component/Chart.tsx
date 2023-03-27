@@ -1,4 +1,4 @@
-import { dataChart1, dataChart2 } from '@/Assets/Charts';
+import {dataChart1, dataChart2} from '@/Assets/Charts';
 import {
 	CategoryScale,
 	Chart as ChartJS,
@@ -9,11 +9,11 @@ import {
 	LineElement,
 	PointElement,
 	Title,
-	Tooltip
+	Tooltip,
 } from 'chart.js';
-import { useMemo } from 'react';
-import { Line } from 'react-chartjs-2';
-import { useCurrentFrame } from 'remotion';
+import {useMemo} from 'react';
+import {Line} from 'react-chartjs-2';
+import {useCurrentFrame} from 'remotion';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
