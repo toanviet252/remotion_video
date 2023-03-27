@@ -5,5 +5,35 @@
 
 import {Config} from 'remotion';
 
+const path = require('path');
+
 Config.setImageFormat('jpeg');
 Config.setOverwriteOutput(true);
+
+Config.overrideWebpackConfig((configs) => {
+	type Resolve = NonNullable<typeof configs.resolve>;
+	type Alias = NonNullable<Resolve['alias']>;
+
+	const resolve = configs.resolve ?? ({} as Resolve);
+	const alias = resolve.alias ?? ({} as Alias);
+
+	const currentDir = resolveCurrentDir();
+
+	alias['@'] = path.resolve(currentDir, 'src');
+
+	resolve.alias = alias;
+	configs.resolve = resolve;
+
+	console.log(alias);
+
+	return configs;
+});
+
+function resolveCurrentDir(): string {
+	let dir = __dirname;
+	const idx = dir.indexOf('node_modules');
+	if (idx >= 0) {
+		dir = dir.substring(0, idx);
+	}
+	return dir;
+}

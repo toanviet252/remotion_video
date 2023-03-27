@@ -1,8 +1,8 @@
-import {Sequence} from 'remotion';
-import Intro from './Content/Intro';
-import FinalSence from './FinalSence/FinalSence';
-import Sence2 from './Sence2';
-import Sence3 from './Sence3/Sence3';
+import { Sequence } from 'remotion';
+import FinalScene from './FinalScene';
+import Intro from './IntroScene';
+import Scene2 from './Scene2';
+import Scene3 from './Scene3';
 
 export const MyVideo: React.FC = () => {
 	return (
@@ -18,12 +18,9 @@ export const MyVideo: React.FC = () => {
 			<Sequence durationInFrames={150}>
 				<Intro />
 			</Sequence>
-
-			<Sence2 />
-
-			<Sence3 />
-
-			<FinalSence />
+			<Scene2 />
+			<Scene3 />
+			<FinalScene />
 		</div>
 	);
 };

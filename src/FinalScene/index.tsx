@@ -1,9 +1,9 @@
 import {AbsoluteFill, interpolate, Sequence, useCurrentFrame} from 'remotion';
-import {ExtraPolateOptions} from '../constants';
+import {ExtraPolateOptions} from '@/constants';
 import {Logo1} from './Component/Logo1';
 import {Logo2} from './Component/Logo2';
 
-const FinalSence: React.FC = () => {
+const FinalScene: React.FC = () => {
 	const frame = useCurrentFrame();
 	const opacity = (delay: number) => {
 		return interpolate(frame - delay, [850, 870], [0, 1], {...ExtraPolateOptions});
@@ -59,4 +59,4 @@ const FinalSence: React.FC = () => {
 		</Sequence>
 	);
 };
-export default FinalSence;
+export default FinalScene;

@@ -1,11 +1,13 @@
-import Text from '../Component/Text';
+import { Easing, interpolate, useCurrentFrame } from 'remotion';
+
+import { EventDate, EventTime } from '@/Assets/Scene1';
+import Text from '../../Components/Text';
 import Logo from '../Component/Logo';
-import {useCurrentFrame, interpolate, Easing} from 'remotion';
 
 const SubContent: React.FC = () => {
 	const frame = useCurrentFrame();
 	const opacity = interpolate(frame, [35, 45], [0.5, 1]);
-	// cubic-bezier(.15,.27,.45,.79)
+	// Cubic-bezier(.15,.27,.45,.79)
 	const paddingBottom = interpolate(frame, [52, 62], [50, 5], {
 		easing: Easing.bezier(0.15, 0.27, 0.45, 0.79),
 		extrapolateLeft: 'clamp',
@@ -27,7 +29,7 @@ const SubContent: React.FC = () => {
 						paddingBottom: `${paddingBottom}px`,
 					}}
 				>
-					<Text text="21 Oct 2022" startFrame={36} endFrame={46} />
+					<Text text={EventDate} startFrame={36} endFrame={46} />
 				</span>
 				<span
 					style={{
@@ -35,7 +37,7 @@ const SubContent: React.FC = () => {
 						transform: `translateY(${translateY}px)`,
 					}}
 				>
-					3:38:04
+					{EventTime}
 				</span>
 			</div>
 

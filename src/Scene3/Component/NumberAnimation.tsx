@@ -1,5 +1,5 @@
 import {interpolate, useCurrentFrame} from 'remotion';
-import {ExtraPolateOptions} from '../../constants';
+import {ExtraPolateOptions} from '@/constants';
 
 const NumberAnimation: React.FC<{
 	startNumber: number;

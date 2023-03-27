@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
 	module: {
 		loaders: [
@@ -6,5 +8,10 @@ module.exports = {
 				loader: 'json-loader',
 			},
 		],
+	},
+	resolve: {
+		alias: {
+			'@': path.resolve(__dirname, 'src')
+		}
 	},
 };

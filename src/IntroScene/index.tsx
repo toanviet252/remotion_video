@@ -1,13 +1,20 @@
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
+import BlinkMovableShapes from './Component/BlinkMovableShapes';
 import Line from './Component/Line';
-import ShapeContainer from './Component/ShapeContainer';
 import SubContent from './Component/Subcontent';
 
-import './intro.css';
+import {TextContent} from '@/Assets/Scene1';
+import {useMemo} from 'react';
+import './style.css';
 
 const Intro: React.FC = () => {
 	const frame = useCurrentFrame();
 	const outroOpacity = interpolate(frame, [145, 150], [1, 0]);
+
+	const contents = useMemo(() => {
+		return TextContent.split('\n');
+	}, []);
+
 	return (
 		<>
 			<AbsoluteFill
@@ -15,16 +22,13 @@ const Intro: React.FC = () => {
 					opacity: `${outroOpacity}`,
 				}}
 			>
-				<ShapeContainer />
+				<BlinkMovableShapes />
 				<div className="content-container">
 					<div className="content">
-						<Line content="Amazon india rolls" startFrame={0} endFrame={15} />
-						<Line content="out live-stream" startFrame={5} endFrame={20} />
-						<Line content="shopping to drive" startFrame={10} endFrame={25} />
-						<Line content="festive season" startFrame={15} endFrame={30} />
-						<Line content="sales" startFrame={20} endFrame={35} />
+						{contents.map((text, idx) => (
+							<Line key={idx} content={text} startFrame={idx * 5} endFrame={idx * 5 + 15} />
+						))}
 					</div>
-
 					<SubContent />
 				</div>
 			</AbsoluteFill>
