@@ -1,5 +1,6 @@
-import { ExtraPolateOptions } from '@/constants';
-import { Easing, interpolate, useCurrentFrame } from 'remotion';
+import {ExtraPolateOptions} from '@/constants';
+import {useMemo} from 'react';
+import {Easing, interpolate, useCurrentFrame} from 'remotion';
 
 const TextAnimation: React.FC<{
 	text: string;
@@ -23,11 +24,14 @@ const TextAnimation: React.FC<{
 		});
 	};
 
+	const texts = useMemo(() => text.split(' '), [text]);
+
 	return (
 		<>
-			{text.split(' ').map((t, index) => {
+			{texts.map((t, index) => {
 				return (
 					<span
+						key={index}
 						style={{
 							transform: `translateY(${translateY(index)}px)`,
 							display: 'inline-block',

@@ -1,4 +1,11 @@
-import {DailyChallenge, DailyPercentage, StockPrice} from '@/Assets/Scene3';
+import {
+	AMZDailyChallenge,
+	AMZDailyPercentage,
+	AMZStockPrice,
+	NDXIndexChange,
+	NDXIndexPercentage,
+	NDXStockPrice,
+} from '@/Assets/Scene3';
 import {ExtraPolateOptions} from '@/constants';
 import {AbsoluteFill, Easing, interpolate, Sequence, useCurrentFrame} from 'remotion';
 import BackGround from './Component/Background';
@@ -48,8 +55,8 @@ const Sence3: React.FC = () => {
 								<TextAnimation text="AMZN.O Price" startFrame={30} endFrame={40} translateYArray={[-50, 0]} />
 							</div>
 							<NumberAnimation
-								startNumber={StockPrice[0]}
-								endNumber={StockPrice[1]}
+								startNumber={AMZStockPrice[0]}
+								endNumber={AMZStockPrice[1]}
 								frameRange={[30, 70]}
 								backgroundColor="#0520ff"
 							/>
@@ -59,8 +66,8 @@ const Sence3: React.FC = () => {
 								<TextAnimation text="Daily Challenge" startFrame={40} endFrame={60} translateYArray={[-50, 0]} />
 							</div>
 							<NumberAnimation
-								startNumber={DailyChallenge[0]}
-								endNumber={DailyChallenge[1]}
+								startNumber={AMZDailyChallenge[0]}
+								endNumber={AMZDailyChallenge[1]}
 								frameRange={[40, 80]}
 								backgroundColor="#ff5706"
 							/>
@@ -70,8 +77,8 @@ const Sence3: React.FC = () => {
 								<TextAnimation text="Daily Percentage" startFrame={50} endFrame={70} translateYArray={[-50, 0]} />
 							</div>
 							<NumberAnimation
-								startNumber={DailyPercentage[0]}
-								endNumber={DailyPercentage[1]}
+								startNumber={AMZDailyPercentage[0]}
+								endNumber={AMZDailyPercentage[1]}
 								frameRange={[50, 90]}
 								backgroundColor="#58ca95"
 								notation="%"
@@ -112,8 +119,8 @@ const Sence3: React.FC = () => {
 								<TextAnimation text=".NDX Price" startFrame={100} endFrame={120} translateYArray={[-50, 0]} />
 							</span>
 							<NumberAnimation
-								startNumber={0}
-								endNumber={10971.222}
+								startNumber={NDXStockPrice[0]}
+								endNumber={NDXStockPrice[1]}
 								frameRange={[100, 140]}
 								backgroundColor="white"
 								fontColor="#273cff"
@@ -124,8 +131,8 @@ const Sence3: React.FC = () => {
 								<TextAnimation text="Index Change" startFrame={120} endFrame={140} translateYArray={[-50, 0]} />
 							</span>
 							<NumberAnimation
-								startNumber={0}
-								endNumber={-193.558}
+								startNumber={NDXIndexChange[0]}
+								endNumber={NDXIndexChange[1]}
 								frameRange={[120, 160]}
 								backgroundColor="#ff5706"
 								fontColor="white"
@@ -136,8 +143,8 @@ const Sence3: React.FC = () => {
 								<TextAnimation text="Index Percentage" startFrame={140} endFrame={160} translateYArray={[-50, 0]} />
 							</span>
 							<NumberAnimation
-								startNumber={0}
-								endNumber={-0.02}
+								startNumber={NDXIndexPercentage[0]}
+								endNumber={NDXIndexPercentage[1]}
 								frameRange={[140, 180]}
 								backgroundColor="#ff5706"
 								fontColor="white"
@@ -152,7 +159,7 @@ const Sence3: React.FC = () => {
 
 			<AbsoluteFill className="Chart" style={{zIndex: '100', position: 'absolute', height: '50%', top: '32%'}}>
 				<Sequence from={650} durationInFrames={210} style={{margin: '4rem', width: '90%', opacity: `${opacity2}`}}>
-					<Chart />
+					<Chart durationInFrames={210} />
 				</Sequence>
 			</AbsoluteFill>
 		</>
