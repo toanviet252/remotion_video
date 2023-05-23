@@ -1,7 +1,8 @@
 import {AbsoluteFill, interpolate, Sequence, useCurrentFrame} from 'remotion';
 import {ExtraPolateOptions} from '@/constants';
 import {Logo1} from './Component/Logo1';
-import {Logo2} from './Component/Logo2';
+import {Logo2Part1} from './Component/Logo2_part1';
+import {Logo2Part2} from './Component/Logo2_part2';
 
 const FinalScene: React.FC = () => {
 	const frame = useCurrentFrame();
@@ -16,22 +17,24 @@ const FinalScene: React.FC = () => {
 			<AbsoluteFill style={{backgroundColor: 'white', opacity: opacity(0)}}>
 				<Logo1 opacity={opacity(15)} translate={translateY(15, [800, 0])} />
 
-				<Logo2 opacity={opacity(40)} translate={translateY(40, [300, 0])} />
+				<Logo2Part1 opacity={opacity(40)} translate={translateY(40, [300, 0])} />
+				<Logo2Part2 opacity={opacity(45)} translate={translateY(45, [300, 0])} />
 
 				<div className="banner">
 					<span
 						style={{
 							fontSize: '5rem',
 							backgroundColor: 'blue',
-							fontWeight: '800',
+							fontWeight: '700',
 							textTransform: 'uppercase',
+							letterSpacing: '3px',
 							color: 'white',
 							position: 'absolute',
 							bottom: '45%',
 							left: '50%',
 							transform: 'translate(-50%,-50%)',
 							display: 'inline-block',
-							width: '60%',
+							width: '55%',
 							textAlign: 'center',
 							opacity: opacity(20),
 						}}
@@ -44,12 +47,13 @@ const FinalScene: React.FC = () => {
 					<p
 						style={{
 							textAlign: 'center',
-							fontSize: '4.5rem',
+							fontSize: '3.5rem',
 							fontWeight: '600',
 							position: 'absolute',
 							bottom: '15%',
 							width: '100%',
 							opacity: opacity(60),
+							color: 'black',
 						}}
 					>
 						An LSEG Business

@@ -1,4 +1,4 @@
-import { Sequence } from 'remotion';
+import {Sequence} from 'remotion';
 import FinalScene from './FinalScene';
 import Intro from './IntroScene';
 import Scene2 from './Scene2';

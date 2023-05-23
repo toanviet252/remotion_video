@@ -1,4 +1,5 @@
 import {dataChart1, dataChart2} from '@/Assets/Charts';
+import {addExtraDataPoint} from '@/Utils/addExrtaPointData';
 import {
 	CategoryScale,
 	Chart as ChartJS,
@@ -72,16 +73,21 @@ const Chart = ({durationInFrames}: {durationInFrames: number}): JSX.Element => {
 		[]
 	);
 
+	const newDataChart1 = addExtraDataPoint(dataChart1, 1);
+	const newDataChart2 = addExtraDataPoint(dataChart2, 1);
+
 	const firstDataPoint = useMemo(() => {
-		return Math.ceil((dataChart1.length * frame) / durationInFrames);
-	}, [durationInFrames, frame]);
+		return Math.ceil((newDataChart1.length * frame) / durationInFrames);
+	}, [durationInFrames, frame, newDataChart1.length]);
+
+	console.log('firstDataPoint', firstDataPoint, 'frame', frame, 'dataLength', newDataChart1.length);
 
 	const data: ChartData<'line'> = useMemo(() => {
 		return {
-			labels: new Array(dataChart1.length).fill(''),
+			labels: new Array(newDataChart1.length).fill(''),
 			datasets: [
 				{
-					data: dataChart1,
+					data: newDataChart1,
 					borderColor: 'white',
 					backgroundColor: 'rgba(255, 99, 132, 0.5)',
 					yAxisID: 'y',
@@ -90,7 +96,7 @@ const Chart = ({durationInFrames}: {durationInFrames: number}): JSX.Element => {
 					showLine: false,
 				},
 				{
-					data: dataChart2,
+					data: newDataChart2,
 					borderColor: 'blue',
 					backgroundColor: 'rgba(53, 162, 235, 0.5)',
 					yAxisID: 'y1',
@@ -99,7 +105,7 @@ const Chart = ({durationInFrames}: {durationInFrames: number}): JSX.Element => {
 					showLine: false,
 				},
 				{
-					data: dataChart1.slice(0, firstDataPoint),
+					data: newDataChart1.slice(0, firstDataPoint),
 					borderColor: 'white',
 					backgroundColor: 'rgba(255, 99, 132, 0.5)',
 					yAxisID: 'y',
@@ -107,7 +113,7 @@ const Chart = ({durationInFrames}: {durationInFrames: number}): JSX.Element => {
 					pointRadius: 0,
 				},
 				{
-					data: dataChart2.slice(0, firstDataPoint),
+					data: newDataChart2.slice(0, firstDataPoint),
 					borderColor: 'blue',
 					backgroundColor: 'rgba(53, 162, 235, 0.5)',
 					yAxisID: 'y1',

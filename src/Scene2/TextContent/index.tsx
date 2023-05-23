@@ -6,7 +6,7 @@ import {Easing, interpolate, useCurrentFrame} from 'remotion';
 import {TextContent} from '@/Assets/Scene2';
 import {ExtraPolateOptions} from '@/constants';
 
-const TextContentComp = ({durationInFrames}: {durationInFrames: number}): JSX.Element => {
+const TextContentComp = (): JSX.Element => {
 	const frame = useCurrentFrame();
 	const height = interpolate(frame, [0, 30], [15, 55], {
 		...ExtraPolateOptions,
@@ -17,35 +17,31 @@ const TextContentComp = ({durationInFrames}: {durationInFrames: number}): JSX.El
 		easing: Easing.bezier(0.11, 0.36, 0.48, 0.94),
 	});
 
-	const opacity = interpolate(frame, [durationInFrames - 45, durationInFrames - 15], [0, 1]);
+	const opacity = interpolate(frame, [260, 290], [0, 1], ExtraPolateOptions);
 
 	const translateY = interpolate(frame, [0, 35], [720, 0], {
 		...ExtraPolateOptions,
 		easing: Easing.ease,
 	});
-
 	const words = useMemo(() => {
 		return TextContent.split(' ');
 	}, []);
 
 	const wordOpacity = (index: number) => {
-		const idleOpacity = 0.15;
-		const totalWords = words.length;
-		if (totalWords === 0) {
-			return idleOpacity;
-		}
-		const currentFrame = frame;
+		const wordStartFrame = 40; // Frame at which the words start fading in
+		const fadeDuration = 15; // Duration of fading in for each word
+		const fadeDelay = 10; // Delay between fading in of consecutive words
+		const currentFrame = frame - wordStartFrame;
+		const wordDelay = index * fadeDelay;
 
-		const delay = 40;
-		if (currentFrame < delay) {
-			return idleOpacity;
+		if (currentFrame >= wordDelay && currentFrame < wordDelay + fadeDuration) {
+			// Const opacityProgress = (currentFrame - wordDelay) / fadeDuration;
+
+			// return interpolate(opacityProgress, [0, 1], [0.15, 1], ExtraPolateOptions);
+			return interpolate(currentFrame - wordDelay, [0, fadeDuration], [0.15, 1], ExtraPolateOptions);
 		}
-		const textDuration = durationInFrames - delay;
-		const showAt = (textDuration * index) / totalWords;
-		if (currentFrame >= delay + showAt) {
-			return 1;
-		}
-		return idleOpacity;
+		// Opacity remains at 1 after reaching it
+		return currentFrame >= wordDelay ? 1 : 0.15;
 	};
 
 	return (
@@ -60,6 +56,7 @@ const TextContentComp = ({durationInFrames}: {durationInFrames: number}): JSX.El
 					left: '0',
 				}}
 			/>
+
 			<div
 				style={{
 					position: 'relative',
@@ -99,6 +96,7 @@ const TextContentComp = ({durationInFrames}: {durationInFrames: number}): JSX.El
 										opacity: wordOpacity(index),
 										marginRight: '1rem',
 										fontSize: '60px',
+										fontWeight: '600',
 									}}
 								>
 									{word}
