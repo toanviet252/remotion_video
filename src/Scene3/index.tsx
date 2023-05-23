@@ -30,6 +30,7 @@ const Scene3: React.FC = () => {
 	};
 	return (
 		<>
+			{/* <h1 style={{color: 'white'}}>Frame: {frame}</h1> */}
 			<Sequence from={590} durationInFrames={270}>
 				<AbsoluteFill
 					className="background-sence3"
@@ -103,8 +104,8 @@ const Scene3: React.FC = () => {
 								backgroundColor: 'white',
 								color: 'blue',
 								right: '-5%',
-								opacity: opacityLabel(15),
-								transform: `translateY(${translateLabel(15)}px)`,
+								opacity: opacityLabel(50),
+								transform: `translateY(${translateLabel(50)}px)`,
 							}}
 						>
 							.NDX
@@ -116,36 +117,36 @@ const Scene3: React.FC = () => {
 					<div className="stock-value-container">
 						<div className="stock-item">
 							<span>
-								<TextAnimation text=".NDX Price" startFrame={100} endFrame={120} translateYArray={[-50, 0]} />
+								<TextAnimation text=".NDX Price" startFrame={110} endFrame={130} translateYArray={[-50, 0]} />
 							</span>
 							<NumberAnimation
 								startNumber={NDXStockPrice[0]}
 								endNumber={NDXStockPrice[1]}
-								frameRange={[100, 140]}
+								frameRange={[110, 150]}
 								backgroundColor="white"
 								fontColor="#273cff"
 							/>
 						</div>
 						<div className="stock-item">
 							<span>
-								<TextAnimation text="Index Change" startFrame={120} endFrame={140} translateYArray={[-50, 0]} />
+								<TextAnimation text="Index Change" startFrame={130} endFrame={150} translateYArray={[-50, 0]} />
 							</span>
 							<NumberAnimation
 								startNumber={NDXIndexChange[0]}
 								endNumber={NDXIndexChange[1]}
-								frameRange={[120, 160]}
+								frameRange={[130, 170]}
 								backgroundColor="#ff5706"
 								fontColor="white"
 							/>
 						</div>
 						<div className="stock-item">
 							<span>
-								<TextAnimation text="Index Percentage" startFrame={140} endFrame={160} translateYArray={[-50, 0]} />
+								<TextAnimation text="Index Percentage" startFrame={150} endFrame={170} translateYArray={[-50, 0]} />
 							</span>
 							<NumberAnimation
 								startNumber={NDXIndexPercentage[0]}
 								endNumber={NDXIndexPercentage[1]}
-								frameRange={[140, 180]}
+								frameRange={[150, 180]}
 								backgroundColor="#ff5706"
 								fontColor="white"
 								notation="%"
