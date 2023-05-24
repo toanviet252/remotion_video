@@ -8,3 +8,6 @@ export const NDXIndexPercentage = [0, -0.02];
 
 export const EventDate = '30 Sep 2022';
 export const EventTime = '10:49:16 AM';
+
+export const BrandChart1 = 'AMZN.O';
+export const BrandChart2 = '.NDX';

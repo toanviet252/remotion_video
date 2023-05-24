@@ -1,21 +1,22 @@
 import {AbsoluteFill, interpolate, Sequence, useCurrentFrame} from 'remotion';
 import {ExtraPolateOptions} from '@/constants';
-import {Logo1} from './Component/Logo1';
-import {Logo2Part1} from './Component/Logo2_part1';
-import {Logo2Part2} from './Component/Logo2_part2';
+// Import {Logo1} from './Component/Logo1';
+// import {Logo2Part1} from './Component/Logo2_part1';
+// import {Logo2Part2} from './Component/Logo2_part2';
+import BrandVideo from './Component/BrandVideo';
 
 const FinalScene: React.FC = () => {
 	const frame = useCurrentFrame();
 	const opacity = (delay: number) => {
 		return interpolate(frame - delay, [850, 870], [0, 1], {...ExtraPolateOptions});
 	};
-	const translateY = (delay: number, translateArr: [number, number]) => {
-		return interpolate(frame - delay, [850, 860], translateArr, {...ExtraPolateOptions});
-	};
+	// Const translateY = (delay: number, translateArr: [number, number]) => {
+	// 	return interpolate(frame - delay, [850, 860], translateArr, {...ExtraPolateOptions});
+	// };
 	return (
 		<Sequence from={850}>
 			<AbsoluteFill style={{backgroundColor: 'white', opacity: opacity(0)}}>
-				<Logo1 opacity={opacity(15)} translate={translateY(15, [800, 0])} />
+				{/* <Logo1 opacity={opacity(15)} translate={translateY(15, [800, 0])} />
 
 				<Logo2Part1 opacity={opacity(40)} translate={translateY(40, [300, 0])} />
 				<Logo2Part2 opacity={opacity(45)} translate={translateY(45, [300, 0])} />
@@ -58,7 +59,8 @@ const FinalScene: React.FC = () => {
 					>
 						An LSEG Business
 					</p>
-				</div>
+				</div> */}
+				<BrandVideo />
 			</AbsoluteFill>
 		</Sequence>
 	);

@@ -2,6 +2,8 @@ import {
 	AMZDailyChallenge,
 	AMZDailyPercentage,
 	AMZStockPrice,
+	BrandChart1,
+	BrandChart2,
 	NDXIndexChange,
 	NDXIndexPercentage,
 	NDXStockPrice,
@@ -26,8 +28,14 @@ const Scene3: React.FC = () => {
 		return interpolate(frame - delay, [650, 680], [0, 1], {...ExtraPolateOptions});
 	};
 	const translateLabel = (delay: number) => {
-		return interpolate(frame - delay, [650, 660], [-60, 0], {...ExtraPolateOptions, easing: Easing.ease});
+		return interpolate(frame - delay, [650, 660], [-60, 0], {
+			...ExtraPolateOptions,
+			easing: Easing.bezier(0.15, 0.27, 0.45, 0.79),
+		});
 	};
+
+	// Layer mask
+	const maskOpacity = interpolate(frame, [700, 720], [1, 0], {...ExtraPolateOptions});
 	return (
 		<>
 			{/* <h1 style={{color: 'white'}}>Frame: {frame}</h1> */}
@@ -97,18 +105,18 @@ const Scene3: React.FC = () => {
 								transform: `translateY(${translateLabel(0)}px)`,
 							}}
 						>
-							AMZN.O
+							{BrandChart1}
 						</span>
 						<span
 							style={{
 								backgroundColor: 'white',
 								color: 'blue',
-								right: '-5%',
+								right: '-9%',
 								opacity: opacityLabel(50),
 								transform: `translateY(${translateLabel(50)}px)`,
 							}}
 						>
-							.NDX
+							{BrandChart2}
 						</span>
 					</div>
 
@@ -161,6 +169,11 @@ const Scene3: React.FC = () => {
 			<AbsoluteFill className="Chart" style={{zIndex: '100', position: 'absolute', height: '50%', top: '32%'}}>
 				<Sequence from={650} durationInFrames={210} style={{margin: '4rem', width: '90%', opacity: `${opacity2}`}}>
 					<Chart durationInFrames={150} />
+				</Sequence>
+
+				{/* Layer mask */}
+				<Sequence from={650} durationInFrames={70}>
+					<div className="layer-mask" style={{opacity: maskOpacity}} />
 				</Sequence>
 			</AbsoluteFill>
 		</>
