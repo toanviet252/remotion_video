@@ -3,7 +3,7 @@ import {Video, Sequence} from 'remotion';
 
 const BrandVideo: React.FC = () => {
 	return (
-		<Sequence from={20}>
+		<Sequence from={20} durationInFrames={90}>
 			<Video muted src={BrandVideoFile} loop={false} />;
 		</Sequence>
 	);

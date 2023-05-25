@@ -60,7 +60,7 @@ const shape = [
 
 const BackGround = () => {
 	const frame = useCurrentFrame();
-	const translation = interpolate(frame, [0, 300], [-280, 180], {...ExtraPolateOptions});
+	const translation = interpolate(frame, [0, 360], [-280, 180], {...ExtraPolateOptions});
 	return (
 		<>
 			<div

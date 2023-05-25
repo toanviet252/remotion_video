@@ -1,4 +1,3 @@
-import {Sequence} from 'remotion';
 import FinalScene from './FinalScene';
 import Intro from './IntroScene';
 import Scene2 from './Scene2';
@@ -15,9 +14,7 @@ export const MyVideo: React.FC = () => {
 				zIndex: '10',
 			}}
 		>
-			<Sequence durationInFrames={150}>
-				<Intro />
-			</Sequence>
+			<Intro />
 			<Scene2 />
 			<Scene3 />
 			<FinalScene />

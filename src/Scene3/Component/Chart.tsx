@@ -1,3 +1,4 @@
+import {Easing} from 'remotion';
 import {dataChart1, dataChart2} from '@/Assets/Charts';
 import {addExtraDataPoint} from '@/Utils/addExrtaPointData';
 import {
@@ -14,7 +15,7 @@ import {
 } from 'chart.js';
 import {useMemo} from 'react';
 import {Line} from 'react-chartjs-2';
-import {useCurrentFrame} from 'remotion';
+import {interpolate, useCurrentFrame} from 'remotion';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -77,17 +78,22 @@ const Chart = ({durationInFrames}: {durationInFrames: number}): JSX.Element => {
 	const newDataChart2 = useMemo(() => addExtraDataPoint(dataChart2, 1), []);
 
 	const firstDataPoint = useMemo(() => {
-		return Math.ceil(((newDataChart1.length * frame) / durationInFrames) * 3);
+		return interpolate(frame, [20, Math.floor(durationInFrames / 2)], [0, newDataChart1.length], {
+			extrapolateRight: 'clamp',
+			extrapolateLeft: 'clamp',
+			easing: Easing.inOut(Easing.cubic),
+		});
 	}, [durationInFrames, frame, newDataChart1.length]);
 
 	// Console.log('firstDataPoint', firstDataPoint, 'frame', frame, 'dataLength', newDataChart1.length);
 	const secondDataPoint = useMemo(() => {
-		if (firstDataPoint > 157) {
-			return Math.ceil(((newDataChart2.length * frame) / durationInFrames) * 3 - 157);
-		}
-		return 0;
-	}, [durationInFrames, firstDataPoint, frame, newDataChart2.length]);
-	// Console.log('secondDataPoint', secondDataPoint);
+		return interpolate(frame, [Math.floor((durationInFrames - 20) / 2), durationInFrames], [0, newDataChart2.length], {
+			extrapolateRight: 'clamp',
+			extrapolateLeft: 'clamp',
+			easing: Easing.inOut(Easing.cubic),
+		});
+	}, [durationInFrames, frame, newDataChart2.length]);
+
 	const data: ChartData<'line'> = useMemo(() => {
 		return {
 			labels: new Array(newDataChart1.length).fill(''),
@@ -111,18 +117,18 @@ const Chart = ({durationInFrames}: {durationInFrames: number}): JSX.Element => {
 					showLine: false,
 				},
 				{
-					data: newDataChart1.slice(0, firstDataPoint),
-					borderColor: 'blue',
-					backgroundColor: 'rgba(255, 99, 132, 0.5)',
-					yAxisID: 'y',
-					borderWidth: 8,
-					pointRadius: 0,
-				},
-				{
 					data: newDataChart2.slice(0, secondDataPoint),
 					borderColor: 'white',
 					backgroundColor: 'rgba(53, 162, 235, 0.5)',
 					yAxisID: 'y1',
+					borderWidth: 8,
+					pointRadius: 0,
+				},
+				{
+					data: newDataChart1.slice(0, firstDataPoint),
+					borderColor: 'blue',
+					backgroundColor: 'rgba(255, 99, 132, 0.5)',
+					yAxisID: 'y',
 					borderWidth: 8,
 					pointRadius: 0,
 				},

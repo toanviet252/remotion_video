@@ -12,10 +12,19 @@ import {MyVideo} from './Video';
 export const RemotionRoot: React.FC = () => {
 	return (
 		<>
-			<Composition id="MyVideo" component={MyVideo} durationInFrames={980} width={1080} height={1920} fps={30} />
+			<Composition id="MyVideo" component={MyVideo} durationInFrames={1020} width={1080} height={1920} fps={30} />
 			<Composition id="Intro" component={Intro} durationInFrames={120} width={720} height={1080} fps={30} />
 			<Composition id="TextTheme" component={TextContent} durationInFrames={300} width={1080} height={1920} fps={30} />
-			<Composition id="Chart" component={Chart} durationInFrames={300} width={1920} height={1080} fps={30} />
+			<Composition
+				id="Chart"
+				component={() => {
+					return <Chart durationInFrames={360} />;
+				}}
+				durationInFrames={360}
+				width={1920}
+				height={1080}
+				fps={30}
+			/>
 			<Composition id="BackGround" component={BackGround} durationInFrames={300} width={1920} height={1080} fps={30} />
 		</>
 	);

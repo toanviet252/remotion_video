@@ -39,7 +39,7 @@ const Scene3: React.FC = () => {
 	return (
 		<>
 			{/* <h1 style={{color: 'white'}}>Frame: {frame}</h1> */}
-			<Sequence from={590} durationInFrames={270}>
+			<Sequence from={590} durationInFrames={330}>
 				<AbsoluteFill
 					className="background-sence3"
 					style={{zIndex: '-1', filter: 'blur(10px)', backgroundColor: 'black', opacity}}
@@ -48,7 +48,7 @@ const Scene3: React.FC = () => {
 				</AbsoluteFill>
 			</Sequence>
 
-			<Sequence from={590} durationInFrames={270}>
+			<Sequence from={590} durationInFrames={330}>
 				<AbsoluteFill
 					style={{
 						opacity,
@@ -167,8 +167,8 @@ const Scene3: React.FC = () => {
 			</Sequence>
 
 			<AbsoluteFill className="Chart" style={{zIndex: '100', position: 'absolute', height: '50%', top: '32%'}}>
-				<Sequence from={650} durationInFrames={210} style={{margin: '4rem', width: '90%', opacity: `${opacity2}`}}>
-					<Chart durationInFrames={150} />
+				<Sequence from={650} durationInFrames={270} style={{margin: '4rem', width: '90%', opacity: `${opacity2}`}}>
+					<Chart durationInFrames={180} />
 				</Sequence>
 
 				{/* Layer mask */}

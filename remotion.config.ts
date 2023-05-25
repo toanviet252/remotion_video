@@ -7,6 +7,9 @@ import {Config} from 'remotion';
 
 const path = require('path');
 
+Config.setConcurrency(require('os').cpus().length);
+// Config.setBrowserExecutable('/usr/bin/microsoft-edge-stable');
+// Config.setCodec('h265');
 Config.setImageFormat('jpeg');
 Config.setOverwriteOutput(true);
 

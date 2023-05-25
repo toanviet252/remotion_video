@@ -8,13 +8,13 @@ import BrandVideo from './Component/BrandVideo';
 const FinalScene: React.FC = () => {
 	const frame = useCurrentFrame();
 	const opacity = (delay: number) => {
-		return interpolate(frame - delay, [850, 870], [0, 1], {...ExtraPolateOptions});
+		return interpolate(frame - delay, [910, 930], [0, 1], {...ExtraPolateOptions});
 	};
 	// Const translateY = (delay: number, translateArr: [number, number]) => {
 	// 	return interpolate(frame - delay, [850, 860], translateArr, {...ExtraPolateOptions});
 	// };
 	return (
-		<Sequence from={850}>
+		<Sequence from={910} durationInFrames={110}>
 			<AbsoluteFill style={{backgroundColor: 'white', opacity: opacity(0)}}>
 				{/* <Logo1 opacity={opacity(15)} translate={translateY(15, [800, 0])} />
 
