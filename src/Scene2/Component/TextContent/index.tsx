@@ -19,9 +19,9 @@ const TextContentComp = (): JSX.Element => {
 
 	const opacity = interpolate(frame, [260, 290], [0, 1], ExtraPolateOptions);
 
-	const lineHeight = interpolate(frame - 20, [0, 35], [140, 70], {
+	const lineHeight = interpolate(frame - 20, [0, 25], [140, 70], {
 		...ExtraPolateOptions,
-		easing: Easing.bezier(0, 0.97, 0.55, 0.99),
+		easing: Easing.bezier(0.17, 0.67, 0.69, 0.89),
 	});
 	const words = useMemo(() => {
 		return TextContent.split(' ');

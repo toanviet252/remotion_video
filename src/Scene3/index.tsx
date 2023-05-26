@@ -167,7 +167,7 @@ const Scene3: React.FC = () => {
 			</Sequence>
 
 			<AbsoluteFill className="Chart" style={{zIndex: '100', position: 'absolute', height: '50%', top: '32%'}}>
-				<Sequence from={650} durationInFrames={210} style={{margin: '4rem', width: '90%', opacity: `${opacity2}`}}>
+				<Sequence from={650} durationInFrames={270} style={{margin: '4rem', width: '90%', opacity: `${opacity2}`}}>
 					<Chart />
 				</Sequence>
 
