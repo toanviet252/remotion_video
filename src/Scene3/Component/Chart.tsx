@@ -82,19 +82,13 @@ const Chart = (): JSX.Element => {
 			...ExtraPolateOptions,
 			easing: Easing.bezier(0.03, 0.5, 0.52, 1),
 		});
-		// Return Math.ceil(((newDataChart1.length * frame) / durationInFrames) * 3);
 	}, [frame, newDataChart1.length]);
-	// Console.log(firstDataPoint);
-	console.log('firstDataPoint', firstDataPoint, 'frame', frame, 'dataLength', newDataChart1.length);
+
 	const secondDataPoint = useMemo(() => {
 		return interpolate(frame - 60, [10, 70], [0, newDataChart2.length], {
 			...ExtraPolateOptions,
 			easing: Easing.bezier(0.03, 0.5, 0.52, 1),
 		});
-		// If (firstDataPoint > 157) {
-		// 	return Math.ceil(((newDataChart2.length * frame) / durationInFrames) * 3 - 157);
-		// }
-		// return 0;
 	}, [frame, newDataChart2.length]);
 	// Console.log('secondDataPoint', secondDataPoint);
 	const data: ChartData<'line'> = useMemo(() => {

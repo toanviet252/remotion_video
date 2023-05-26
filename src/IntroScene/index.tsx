@@ -1,3 +1,4 @@
+import {Sequence} from 'remotion';
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import BlinkMovableShapes from './Component/BlinkMovableShapes';
 import Line from './Component/Line';
@@ -16,7 +17,7 @@ const Intro: React.FC = () => {
 	}, []);
 
 	return (
-		<>
+		<Sequence durationInFrames={150}>
 			<AbsoluteFill
 				style={{
 					opacity: `${outroOpacity}`,
@@ -32,7 +33,7 @@ const Intro: React.FC = () => {
 					<SubContent />
 				</div>
 			</AbsoluteFill>
-		</>
+		</Sequence>
 	);
 };
 
