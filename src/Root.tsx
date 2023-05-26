@@ -2,7 +2,7 @@ import {Composition} from 'remotion';
 import Intro from './IntroScene';
 
 import './index.css';
-import TextContent from './Scene2/TextContent';
+import TextContent from './Scene2/Component/TextContent';
 import BackGround from './Scene3/Component/Background';
 import Chart from './Scene3/Component/Chart';
 import {MyVideo} from './Video';

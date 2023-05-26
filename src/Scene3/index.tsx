@@ -125,36 +125,36 @@ const Scene3: React.FC = () => {
 					<div className="stock-value-container">
 						<div className="stock-item">
 							<span>
-								<TextAnimation text=".NDX Price" startFrame={110} endFrame={130} translateYArray={[-50, 0]} />
+								<TextAnimation text=".NDX Price" startFrame={130} endFrame={150} translateYArray={[-50, 0]} />
 							</span>
 							<NumberAnimation
 								startNumber={NDXStockPrice[0]}
 								endNumber={NDXStockPrice[1]}
-								frameRange={[110, 150]}
+								frameRange={[130, 170]}
 								backgroundColor="white"
 								fontColor="#273cff"
 							/>
 						</div>
 						<div className="stock-item">
 							<span>
-								<TextAnimation text="Index Change" startFrame={130} endFrame={150} translateYArray={[-50, 0]} />
+								<TextAnimation text="Index Change" startFrame={150} endFrame={170} translateYArray={[-50, 0]} />
 							</span>
 							<NumberAnimation
 								startNumber={NDXIndexChange[0]}
 								endNumber={NDXIndexChange[1]}
-								frameRange={[130, 170]}
+								frameRange={[150, 190]}
 								backgroundColor="#ff5706"
 								fontColor="white"
 							/>
 						</div>
 						<div className="stock-item">
 							<span>
-								<TextAnimation text="Index Percentage" startFrame={150} endFrame={170} translateYArray={[-50, 0]} />
+								<TextAnimation text="Index Percentage" startFrame={170} endFrame={190} translateYArray={[-50, 0]} />
 							</span>
 							<NumberAnimation
 								startNumber={NDXIndexPercentage[0]}
 								endNumber={NDXIndexPercentage[1]}
-								frameRange={[150, 180]}
+								frameRange={[170, 200]}
 								backgroundColor="#ff5706"
 								fontColor="white"
 								notation="%"
@@ -168,7 +168,7 @@ const Scene3: React.FC = () => {
 
 			<AbsoluteFill className="Chart" style={{zIndex: '100', position: 'absolute', height: '50%', top: '32%'}}>
 				<Sequence from={650} durationInFrames={210} style={{margin: '4rem', width: '90%', opacity: `${opacity2}`}}>
-					<Chart durationInFrames={150} />
+					<Chart />
 				</Sequence>
 
 				{/* Layer mask */}

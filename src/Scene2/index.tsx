@@ -2,7 +2,7 @@ import {AbsoluteFill, interpolate, Sequence, useCurrentFrame, Video} from 'remot
 
 import {VideoFile} from '@/Assets/Scene2';
 import {ExtraPolateOptions} from '@/constants';
-import TextContent from './TextContent';
+import TextContent from './Component/TextContent';
 
 const Scene2: React.FC = () => {
 	const frame = useCurrentFrame();

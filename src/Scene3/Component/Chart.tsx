@@ -1,4 +1,5 @@
 import {dataChart1, dataChart2} from '@/Assets/Charts';
+import {ExtraPolateOptions} from '@/constants';
 import {addExtraDataPoint} from '@/Utils/addExrtaPointData';
 import {
 	CategoryScale,
@@ -14,11 +15,11 @@ import {
 } from 'chart.js';
 import {useMemo} from 'react';
 import {Line} from 'react-chartjs-2';
-import {useCurrentFrame} from 'remotion';
+import {Easing, interpolate, useCurrentFrame} from 'remotion';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-const Chart = ({durationInFrames}: {durationInFrames: number}): JSX.Element => {
+const Chart = (): JSX.Element => {
 	const frame = useCurrentFrame();
 
 	const options = useMemo(
@@ -77,30 +78,29 @@ const Chart = ({durationInFrames}: {durationInFrames: number}): JSX.Element => {
 	const newDataChart2 = useMemo(() => addExtraDataPoint(dataChart2, 1), []);
 
 	const firstDataPoint = useMemo(() => {
-		return Math.ceil(((newDataChart1.length * frame) / durationInFrames) * 3);
-	}, [durationInFrames, frame, newDataChart1.length]);
-
-	// Console.log('firstDataPoint', firstDataPoint, 'frame', frame, 'dataLength', newDataChart1.length);
+		return interpolate(frame, [10, 70], [0, newDataChart1.length], {
+			...ExtraPolateOptions,
+			easing: Easing.bezier(0.03, 0.5, 0.52, 1),
+		});
+		// Return Math.ceil(((newDataChart1.length * frame) / durationInFrames) * 3);
+	}, [frame, newDataChart1.length]);
+	// Console.log(firstDataPoint);
+	console.log('firstDataPoint', firstDataPoint, 'frame', frame, 'dataLength', newDataChart1.length);
 	const secondDataPoint = useMemo(() => {
-		if (firstDataPoint > 157) {
-			return Math.ceil(((newDataChart2.length * frame) / durationInFrames) * 3 - 157);
-		}
-		return 0;
-	}, [durationInFrames, firstDataPoint, frame, newDataChart2.length]);
+		return interpolate(frame - 60, [10, 70], [0, newDataChart2.length], {
+			...ExtraPolateOptions,
+			easing: Easing.bezier(0.03, 0.5, 0.52, 1),
+		});
+		// If (firstDataPoint > 157) {
+		// 	return Math.ceil(((newDataChart2.length * frame) / durationInFrames) * 3 - 157);
+		// }
+		// return 0;
+	}, [frame, newDataChart2.length]);
 	// Console.log('secondDataPoint', secondDataPoint);
 	const data: ChartData<'line'> = useMemo(() => {
 		return {
 			labels: new Array(newDataChart1.length).fill(''),
 			datasets: [
-				{
-					data: newDataChart1,
-					borderColor: 'blue',
-					backgroundColor: 'rgba(255, 99, 132, 0.5)',
-					yAxisID: 'y',
-					borderWidth: 8,
-					pointRadius: 0,
-					showLine: false,
-				},
 				{
 					data: newDataChart2,
 					borderColor: 'white',
@@ -111,18 +111,27 @@ const Chart = ({durationInFrames}: {durationInFrames: number}): JSX.Element => {
 					showLine: false,
 				},
 				{
-					data: newDataChart1.slice(0, firstDataPoint),
+					data: newDataChart1,
 					borderColor: 'blue',
 					backgroundColor: 'rgba(255, 99, 132, 0.5)',
 					yAxisID: 'y',
 					borderWidth: 8,
 					pointRadius: 0,
+					showLine: false,
 				},
 				{
 					data: newDataChart2.slice(0, secondDataPoint),
 					borderColor: 'white',
 					backgroundColor: 'rgba(53, 162, 235, 0.5)',
 					yAxisID: 'y1',
+					borderWidth: 8,
+					pointRadius: 0,
+				},
+				{
+					data: newDataChart1.slice(0, firstDataPoint),
+					borderColor: 'blue',
+					backgroundColor: 'rgba(255, 99, 132, 0.5)',
+					yAxisID: 'y',
 					borderWidth: 8,
 					pointRadius: 0,
 				},
