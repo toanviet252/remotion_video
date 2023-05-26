@@ -12,7 +12,7 @@ const Scene2: React.FC = () => {
 			<Sequence from={150} durationInFrames={460} style={{opacity}}>
 				<TextContent />
 			</Sequence>
-			<Sequence from={140} durationInFrames={480}>
+			<Sequence from={130} durationInFrames={480}>
 				<AbsoluteFill
 					style={{
 						zIndex: '-1',
