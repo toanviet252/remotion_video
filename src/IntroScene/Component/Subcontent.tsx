@@ -1,8 +1,9 @@
-import { Easing, interpolate, useCurrentFrame } from 'remotion';
-
-import { EventDate, EventTime } from '@/Assets/Scene1';
+import {Easing, interpolate, useCurrentFrame} from 'remotion';
+import {EventDate, EventTime} from '@/Assets/Scene1';
 import Text from '../../Components/Text';
 import Logo from '../Component/Logo';
+import {initLocale} from '@/Video';
+import {useMemo} from 'react';
 
 const SubContent: React.FC = () => {
 	const frame = useCurrentFrame();
@@ -19,6 +20,9 @@ const SubContent: React.FC = () => {
 		extrapolateRight: 'clamp',
 		easing: Easing.ease,
 	});
+	const text = useMemo(() => {
+		return EventDate(initLocale);
+	}, []);
 	return (
 		<div className="sub-content">
 			<div className="sub-content left">
@@ -29,7 +33,7 @@ const SubContent: React.FC = () => {
 						paddingBottom: `${paddingBottom}px`,
 					}}
 				>
-					<Text text={EventDate} startFrame={36} endFrame={46} />
+					<Text text={text} startFrame={36} endFrame={46} />
 				</span>
 				<span
 					style={{

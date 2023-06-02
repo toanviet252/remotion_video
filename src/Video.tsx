@@ -1,7 +1,14 @@
 import FinalScene from './FinalScene';
-import Intro from './IntroScene';
 import Scene2 from './Scene2';
 import Scene3 from './Scene3';
+import Intro from './IntroScene';
+
+export enum Locale {
+	'eng' = 'en-US',
+	'vie' = 'vi-VN',
+	'kor' = 'ko-KR',
+}
+export const initLocale = Locale.vie;
 
 export const MyVideo: React.FC = () => {
 	return (

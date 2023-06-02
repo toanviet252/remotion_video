@@ -1,12 +1,18 @@
-export const TextContent = `Amazon india rolls
-out live-stream
-shopping to drive
-festive season
-sale`;
+import {formatTimeLocale} from '@/Utils/formatTimeLocale';
+import {Locale} from '@/Video';
 
-export const EventDate = '21 Oct 2022';
+export const TextContent = (locale: string) => {
+	if (locale === Locale.vie)
+		return `Amazon Ấn Độ triển khai mua sắm trực tiếp trên sóng để thúc đẩy mùa bán hàng dịp lễ hội`;
+	if (locale === Locale.kor) {
+		return `아마존 인도가 축제 시즌 판매 촉진을 위해 라이브 스트리밍 쇼핑을 롤아웃합니다`;
+	}
+	return `Amazon india rolls out live-stream shopping to drive festive season sale`;
+};
+export const EventDate = (locale: string) => {
+	return formatTimeLocale(new Date('21 Oct 2022'), locale);
+};
 export const EventTime = '3:38:04';
-
 export const RectangleTransition = {
 	wD: 3,
 	hD: 6,

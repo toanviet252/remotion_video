@@ -6,6 +6,9 @@ import SubContent from './Component/Subcontent';
 import {TextContent, RectangleTransition} from '@/Assets/Scene1';
 import {useEffect, useMemo, useRef, useState} from 'react';
 import './style.css';
+import {chunk} from '@/Utils/chunk';
+import {initLocale} from '@/Video';
+import {Locale} from '@/Video';
 
 const Transition = {
 	start: 135,
@@ -17,6 +20,11 @@ const Intro: React.FC = () => {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const [mask, setMask] = useState<string>();
 	const outroOpacity = interpolate(frame, [Transition.start, Transition.end], [1, 0]);
+
+	const contents = useMemo(() => {
+		const hash = initLocale === Locale.eng.toString() ? 3 : 4;
+		return chunk(TextContent(initLocale).split(' '), hash).map((arr) => arr.join(' '));
+	}, []);
 
 	useEffect(() => {
 		if (!canvasRef.current) return;
@@ -57,10 +65,6 @@ const Intro: React.FC = () => {
 
 		setMask(canvasRef.current.toDataURL());
 	}, [frame]);
-
-	const contents = useMemo(() => {
-		return TextContent.split('\n');
-	}, []);
 
 	return (
 		<Sequence durationInFrames={180}>
