@@ -7,7 +7,9 @@ import {
 	NDXIndexChange,
 	NDXIndexPercentage,
 	NDXStockPrice,
+	TextChart,
 } from '@/Assets/Scene3';
+import {useMemo} from 'react';
 import {ExtraPolateOptions} from '@/constants';
 import {AbsoluteFill, Easing, interpolate, Sequence, useCurrentFrame} from 'remotion';
 import BackGround from './Component/Background';
@@ -17,6 +19,7 @@ import Logo from './Component/Logo';
 import NumberAnimation from './Component/NumberAnimation';
 import TextAnimation from './Component/TextAnimation';
 import './index.css';
+import {initLocale} from '@/Video';
 
 const Scene3: React.FC = () => {
 	const frame = useCurrentFrame();
@@ -36,6 +39,10 @@ const Scene3: React.FC = () => {
 
 	// Layer mask
 	const maskOpacity = interpolate(frame, [700, 720], [1, 0], {...ExtraPolateOptions});
+
+	const TextData = useMemo(() => {
+		return TextChart(initLocale);
+	}, []);
 	return (
 		<>
 			{/* <h1 style={{color: 'white'}}>Frame: {frame}</h1> */}
@@ -61,7 +68,7 @@ const Scene3: React.FC = () => {
 					<div className="stock-value-container">
 						<div className="stock-item">
 							<div>
-								<TextAnimation text="AMZN.O Price" startFrame={30} endFrame={40} translateYArray={[-50, 0]} />
+								<TextAnimation text={TextData.companyPrice} startFrame={30} endFrame={40} translateYArray={[-50, 0]} />
 							</div>
 							<NumberAnimation
 								startNumber={AMZStockPrice[0]}
@@ -72,7 +79,7 @@ const Scene3: React.FC = () => {
 						</div>
 						<div className="stock-item">
 							<div>
-								<TextAnimation text="Daily Challenge" startFrame={40} endFrame={60} translateYArray={[-50, 0]} />
+								<TextAnimation text={TextData.dailyChange} startFrame={40} endFrame={60} translateYArray={[-50, 0]} />
 							</div>
 							<NumberAnimation
 								startNumber={AMZDailyChallenge[0]}
@@ -83,7 +90,7 @@ const Scene3: React.FC = () => {
 						</div>
 						<div className="stock-item">
 							<div>
-								<TextAnimation text="Daily Percentage" startFrame={50} endFrame={70} translateYArray={[-50, 0]} />
+								<TextAnimation text={TextData.dailyPercent} startFrame={50} endFrame={70} translateYArray={[-50, 0]} />
 							</div>
 							<NumberAnimation
 								startNumber={AMZDailyPercentage[0]}
@@ -125,7 +132,7 @@ const Scene3: React.FC = () => {
 					<div className="stock-value-container">
 						<div className="stock-item">
 							<span>
-								<TextAnimation text=".NDX Price" startFrame={130} endFrame={150} translateYArray={[-50, 0]} />
+								<TextAnimation text={TextData.indexPrice} startFrame={130} endFrame={150} translateYArray={[-50, 0]} />
 							</span>
 							<NumberAnimation
 								startNumber={NDXStockPrice[0]}
@@ -137,7 +144,7 @@ const Scene3: React.FC = () => {
 						</div>
 						<div className="stock-item">
 							<span>
-								<TextAnimation text="Index Change" startFrame={150} endFrame={170} translateYArray={[-50, 0]} />
+								<TextAnimation text={TextData.indexChange} startFrame={150} endFrame={170} translateYArray={[-50, 0]} />
 							</span>
 							<NumberAnimation
 								startNumber={NDXIndexChange[0]}
@@ -149,7 +156,12 @@ const Scene3: React.FC = () => {
 						</div>
 						<div className="stock-item">
 							<span>
-								<TextAnimation text="Index Percentage" startFrame={170} endFrame={190} translateYArray={[-50, 0]} />
+								<TextAnimation
+									text={TextData.indexPercent}
+									startFrame={170}
+									endFrame={190}
+									translateYArray={[-50, 0]}
+								/>
 							</span>
 							<NumberAnimation
 								startNumber={NDXIndexPercentage[0]}

@@ -1,4 +1,4 @@
-import {formatTimeLocale} from '@/Utils/formatTimeLocale';
+import {formatDateLocale} from '@/Utils/formatTimeLocale';
 import {Locale} from '@/Video';
 
 export const TextContent = (locale: string) => {
@@ -10,7 +10,7 @@ export const TextContent = (locale: string) => {
 	return `Amazon india rolls out live-stream shopping to drive festive season sale`;
 };
 export const EventDate = (locale: string) => {
-	return formatTimeLocale(new Date('21 Oct 2022'), locale);
+	return formatDateLocale(new Date('21 Oct 2022'), locale);
 };
 export const EventTime = '3:38:04';
 export const RectangleTransition = {

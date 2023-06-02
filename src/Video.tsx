@@ -8,7 +8,7 @@ export enum Locale {
 	'vie' = 'vi-VN',
 	'kor' = 'ko-KR',
 }
-export const initLocale = Locale.vie;
+export const initLocale = Locale.kor;
 
 export const MyVideo: React.FC = () => {
 	return (
@@ -19,6 +19,7 @@ export const MyVideo: React.FC = () => {
 				justifyContent: 'center',
 				backfaceVisibility: 'hidden',
 				zIndex: '10',
+				fontFamily: initLocale === 'ko-KR' ? 'Noto Sans KR' : 'Open Sans',
 			}}
 		>
 			<Intro />

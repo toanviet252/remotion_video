@@ -1,4 +1,4 @@
-export const formatTimeLocale = (date: Date, locale: string) => {
+export const formatDateLocale = (date: Date, locale: string) => {
 	const options: Intl.DateTimeFormatOptions = {
 		day: 'numeric',
 		year: 'numeric',

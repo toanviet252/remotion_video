@@ -1,6 +1,9 @@
-import {EventDate, EventTime} from '@/Assets/Scene3';
+import {EventDate, EventTime, FooterText} from '@/Assets/Scene3';
 import Text from '@/Components/Text';
 import {ExtraPolateOptions} from '@/constants';
+import {formatDateLocale} from '@/Utils/formatTimeLocale';
+import {initLocale} from '@/Video';
+import {useMemo} from 'react';
 import {Easing, interpolate, useCurrentFrame} from 'remotion';
 
 const Footer: React.FC = () => {
@@ -15,6 +18,13 @@ const Footer: React.FC = () => {
 			...ExtraPolateOptions,
 		});
 	};
+	const date = useMemo(() => {
+		return formatDateLocale(new Date(EventDate), initLocale);
+	}, []);
+	const subText = useMemo(() => {
+		return FooterText(initLocale);
+	}, []);
+
 	return (
 		<div className="sub-content">
 			<div className="sub-content left">
@@ -25,7 +35,7 @@ const Footer: React.FC = () => {
 						paddingBottom: `${paddingBottom(0)}px`,
 					}}
 				>
-					<Text text={EventDate} startFrame={36} endFrame={46} />
+					<Text text={date} startFrame={36} endFrame={46} />
 				</span>
 				<span
 					style={{
@@ -34,7 +44,7 @@ const Footer: React.FC = () => {
 						paddingBottom: `${paddingBottom(27)}px`,
 					}}
 				>
-					<Text text={`As of ${EventTime}`} startFrame={62} endFrame={72} />
+					<Text text={`${subText} ${EventTime}`} startFrame={62} endFrame={72} />
 				</span>
 			</div>
 		</div>
